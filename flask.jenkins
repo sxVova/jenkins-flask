@@ -17,10 +17,9 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'gitlab_prod', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
                         docker login tfgitlab.danjake.opensource-ukraine.org:5050 -u $USERNAME -p $PASSWORD
-                        docker build -t tfgitlab.danjake.opensource-ukraine.org/danjake/flask:5050  -f docker/Dockerfile .
-                        docker push tfgitlab.danjake.opensource-ukraine.org/danjake/flask:5050
+                        docker build -t tfgitlab.danjake.opensource-ukraine.org:5050/sxvova/jenkins-flask  -f docker/Dockerfile .
+                        docker push tfgitlab.danjake.opensource-ukraine.org:5050/sxvova/jenkins-flask
                         """
-
                 }
             }
         }
