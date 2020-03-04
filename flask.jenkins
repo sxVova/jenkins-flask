@@ -11,19 +11,19 @@ pipeline {
         timestamps()
     }
     stages {
-       // stage("create docker image") {
-       //     steps {
-       //         echo " ============== start building image =================="
-       //         withCredentials([usernamePassword(credentialsId: 'dockerhub_morrison', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-     //                   sh """
-    //                    docker login -u $USERNAME -p $PASSWORD
-   //                     docker build -t lizardkinggg/flask:1.25.1 -f Dockerfile .
-  //                      docker push lizardkinggg/flask:1.25.1
- //                       """
-//
-         //       }
-        //    }
-       // }
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                withCredentials([usernamePassword(credentialsId: 'gitlab_prod', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                        docker login registry.tfgitlab.danjake.opensource-ukraine.org -u $USERNAME -p $PASSWORD
+                        docker build -t registry.tfgitlab.danjake.opensource-ukraine.org/danjake/flask  -f docker/Dockerfile .
+                        docker push registry.tfgitlab.danjake.opensource-ukraine.org/danjake/flask
+                        """
+
+                }
+            }
+        }
         stage("deploy ansible") {
             steps {
                 echo " ============== start creatingg hello.txt =================="
