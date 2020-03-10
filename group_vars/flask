@@ -1,6 +1,6 @@
 ---
 
-registry_url                 : tfgitlab.danjake.opensource-ukraine.org:5050
+registry_url                 : registry.tfgitlab.danjake.opensource-ukraine.org
 registry_admin               : sxvova
 project_name                 : jenkins-flask
 commit_sha                   : latest
