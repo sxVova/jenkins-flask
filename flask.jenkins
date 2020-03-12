@@ -11,6 +11,13 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("checkout") {
+            steps {
+                echo " ============== git checkout to the last version =================="
+                        sh """git checkout master
+                        """
+            }
+        }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
