@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 COPY ./application.py  /app/application.py
 COPY ./static/ /app/static/
 COPY ./templates/ /app/templates/
-COPY ./.env /app/.env
+COPY ./roles/flask_role/files/.env /app/.env
    
 
 ENTRYPOINT [ "python" ]
