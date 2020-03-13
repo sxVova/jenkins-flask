@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update -y && \
     apt-get install -y python-pip python-dev
@@ -9,7 +9,11 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY ./application.py  /app/application.py
+COPY ./static/ /app/static/
+COPY ./templates/ /app/templates/
+COPY ./.env /app/.env
+   
 
 ENTRYPOINT [ "python" ]
 
