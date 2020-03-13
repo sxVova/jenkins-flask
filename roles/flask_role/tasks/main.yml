@@ -16,13 +16,9 @@
     src: .env
     dest: .env
 
-- name: Copy file with dsn
-  copy:
-    src: file_with_dsn
-    dest: file_with_dsn
- 
 - name: Make changes
   shell: bash changer.sh
+  ignore_errors: yes
 
 - name: Docker stop
   shell: docker-compose stop {{ registry_admin }}    
